@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = 20f;
     public Rigidbody rb;
     public int playerIndex;
+    public bool jumping = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +24,21 @@ public class PlayerController : MonoBehaviour
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal" + playerIndex), 0, Input.GetAxis("Vertical" + playerIndex));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
-            if (Input.GetButton("Jump"))
-                moveDirection.y = jumpSpeed;
+            jumping = false;
         }
+
+        moveDirection = new Vector3(Input.GetAxis("Horizontal" + playerIndex), 0, Input.GetAxis("Vertical" + playerIndex));
+        moveDirection = transform.TransformDirection(moveDirection);
+        moveDirection *= speed;
+
+        if (!jumping)
+        {
+            jumping = true;
+            moveDirection.y = jumpSpeed;
+        }
+
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
     }
 }
