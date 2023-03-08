@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleScreenStart : MonoBehaviour
+public class TitleScreen : MonoBehaviour
 {
 
     public void StartGame()
