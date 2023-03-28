@@ -39,7 +39,7 @@ public class RandomPlatforms : MonoBehaviour
                 Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
                 numberOfCubesSpawned++;
             }
-            currentSpawnTime = Time.realtimeSinceStartup + 1;
+            currentSpawnTime = Time.realtimeSinceStartup + (float) 0.33;
         }
     }
 }
