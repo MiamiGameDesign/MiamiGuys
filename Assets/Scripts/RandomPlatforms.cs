@@ -31,7 +31,6 @@ public class RandomPlatforms : MonoBehaviour
         {
             if (numberOfCubesSpawned < maxNumberOfCubes)
             {
-                Debug.Log(numberOfCubesSpawned + " " + maxNumberOfCubes);
                 // get a random position from the array of spawn positions
                 Vector3 spawnPosition = new Vector3(Random.Range(-5,5), 0, Random.Range(5,maxZ));
                 maxZ++;

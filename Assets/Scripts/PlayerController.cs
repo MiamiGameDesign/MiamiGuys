@@ -14,8 +14,12 @@ public class PlayerController : MonoBehaviour
     public static bool oneWins = false;
     CharacterController controller;
     public static bool twoWins = false;
+    public static bool dead = false;
     public GameObject winnerText;
     public Image image;
+    public AudioClip jumpNoise;
+    public AudioClip deathNoise;
+    public AudioSource a;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +35,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
         yJumpSpeed = Mathf.MoveTowards(yJumpTarget, yJumpSpeed, Time.deltaTime*3);
         if (controller.isGrounded)
         {
             jumping = false;
+            a.PlayOneShot(jumpNoise);
         }
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal" + playerIndex), 0, Input.GetAxis("Vertical" + playerIndex));
@@ -50,10 +57,16 @@ public class PlayerController : MonoBehaviour
         moveDirection.y = yJumpSpeed;
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
-        Debug.Log(transform.position.y);
         if (transform.position.y < -6) {
+            if (!dead)
+            {
+                a.PlayOneShot(deathNoise);
+                dead = true;
+            }
+            Time.timeScale = 0;
             image.enabled = true;
             winnerText.SetActive(true);
+            
         }
     }
 }
