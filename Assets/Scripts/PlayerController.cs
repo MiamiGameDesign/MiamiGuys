@@ -11,9 +11,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public int playerIndex;
     public bool jumping = false;
-    public static bool oneWins = false;
     CharacterController controller;
-    public static bool twoWins = false;
     public static bool dead = false;
     public GameObject winnerText;
     public Image image;
@@ -21,12 +19,17 @@ public class PlayerController : MonoBehaviour
     public AudioClip deathNoise;
     public AudioSource a;
 
+    //1 player only variables
+    public GameObject survivalText;
+    private float startTime, timeElapsed;
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
-        Time.timeScale = 0.3f;
+        startTime = Time.time;
 
     }
     float yJumpTarget;
@@ -37,6 +40,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Escape))
             Application.Quit();
+        if (Time.timeScale != 0)
+            timeElapsed = (Time.time - startTime) * Time.timeScale;
         yJumpSpeed = Mathf.MoveTowards(yJumpTarget, yJumpSpeed, Time.deltaTime*3);
         if (controller.isGrounded)
         {
@@ -65,8 +70,16 @@ public class PlayerController : MonoBehaviour
             }
             Time.timeScale = 0;
             image.enabled = true;
-            winnerText.SetActive(true);
-            
+            if (Player2.p2)
+                winnerText.SetActive(true);
+            else
+            {
+                survivalText.SetActive(true);
+                survivalText.GetComponent<Text>().text = "You survived for " + (Mathf.Round(timeElapsed * 100f) / 100f) % 60 + " seconds!!!! :D";
+            }
+                
+
+
         }
     }
 }

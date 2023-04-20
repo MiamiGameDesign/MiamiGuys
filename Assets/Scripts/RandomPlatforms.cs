@@ -10,10 +10,10 @@ public class RandomPlatforms : MonoBehaviour
     public GameObject cubePrefab;
 
     // the initial time between cube spawns
-    public float initialSpawnTime = 1f;
+    public float initialSpawnTime = 0.5f;
 
     // the minimum time between cube spawns
-    public float minSpawnTime = 0.5f;
+    public float minSpawnTime = 0.01f;
 
     // the rate at which the spawn time decreases
     public float spawnTimeDecrement = 0.05f;
@@ -38,7 +38,7 @@ public class RandomPlatforms : MonoBehaviour
                 Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
                 numberOfCubesSpawned++;
             }
-            currentSpawnTime = Time.realtimeSinceStartup + (float) 0.33;
+            currentSpawnTime = Time.realtimeSinceStartup + (float) 0.15;
         }
     }
 }
