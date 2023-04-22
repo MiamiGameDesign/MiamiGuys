@@ -26,13 +26,19 @@ public class RandomPlatforms : MonoBehaviour
             if (numberOfCubesSpawned < maxNumberOfCubes)
             {
                 // get a random position from the array of spawn positions
-                Vector3 spawnPosition = new Vector3(Random.Range(-5,5), 0, Random.Range(5,maxZ));
-                maxZ++;
-                // instantiate a new cube at the random position
-                Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
-                numberOfCubesSpawned++;
+                Vector3 spawnPosition = new Vector3(Random.Range(-5, 5), 0, Random.Range(5, maxZ));
+
+                // check if the new cube will overlap with any existing cubes
+                Collider[] colliders = Physics.OverlapBox(spawnPosition, cubePrefab.transform.localScale / 2f);
+                if (colliders.Length == 0) // no overlap, can spawn the new cube
+                {
+                    // instantiate a new cube at the random position
+                    Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
+                    numberOfCubesSpawned++;
+                }
             }
-            currentSpawnTime = Time.realtimeSinceStartup + (float) 0.15;
+            currentSpawnTime = Time.realtimeSinceStartup + initialSpawnTime;
+            maxZ++; // increment the maximum z-position for the next spawn position
         }
     }
 }

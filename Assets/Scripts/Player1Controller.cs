@@ -25,6 +25,7 @@ public class Player1Controller : MonoBehaviour
     {
         startTime = Time.time;
         rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
     }
     private void FixedUpdate()
     {
@@ -36,13 +37,11 @@ public class Player1Controller : MonoBehaviour
         movement.Normalize();
         movement *= moveSpeed * Time.deltaTime;
         Vector3 newPosition = rb.position + transform.TransformDirection(movement);
-
         rb.MovePosition(newPosition);
-
         if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        {   
             a.PlayOneShot(jumpNoise);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
     // Update is called once per frame
@@ -56,7 +55,7 @@ public class Player1Controller : MonoBehaviour
         if (Time.timeScale != 0)
             timeElapsed = (Time.time - startTime) * Time.timeScale;
         //Debug.Log("Time elapsed: " + timeElapsed.ToString());
-        
+
         //check if player dies
         if (transform.position.y < -6)
         {
@@ -70,29 +69,24 @@ public class Player1Controller : MonoBehaviour
             survivalText.SetActive(true);
             survivalText.GetComponent<Text>().text = "You survived for " + (Mathf.Round(timeElapsed * 100f) / 100f) % 60 + " seconds!!!! :D";
         }
-        //movement
-        RaycastHit hitInfo;
-        
-        if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, groundCheckDistance))
-        {
-            
-            isGrounded = true;
-        }
-            
-        else
-        {
-            //Debug.Log("grounded: " + isGrounded + " hit name: " +  hitInfo.collider.name);
-            isGrounded = false;
-        }
-        Vector3 jumpVelocity = Vector3.up * jumpForce / rb.mass;
-        float timeToApex = jumpVelocity.y / -Physics.gravity.y;
-        float distanceToLand = jumpVelocity.x * timeToApex;
-
-        // Draw a visible raycast to indicate where the player will land if they jump
-        Vector3 raycastOrigin = transform.position + Vector3.up * 0.1f;
-        Vector3 raycastDirection = jumpVelocity.normalized;
-        Debug.DrawRay(raycastOrigin, raycastDirection * distanceToLand, Color.green);
-
     }
-    
+    void OnCollisionStay(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            if (Vector3.Dot(contact.normal, Vector3.up) > 0.1)
+            {
+                isGrounded = true;
+                return;
+            }
+        }
+
+        isGrounded = false;
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+    }
+
 }
