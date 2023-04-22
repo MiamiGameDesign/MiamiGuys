@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour
+public class Player2Controller : MonoBehaviour
 {
     public float speed = 6f;
     public float jumpSpeed = 8f;
@@ -19,9 +20,6 @@ public class PlayerController : MonoBehaviour
     public AudioClip deathNoise;
     public AudioSource a;
 
-    //1 player only variables
-    public GameObject survivalText;
-    private float startTime, timeElapsed;
 
 
     // Start is called before the first frame update
@@ -29,8 +27,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
-        startTime = Time.time;
-
     }
     float yJumpTarget;
     float yJumpSpeed;
@@ -40,15 +36,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Escape))
             Application.Quit();
-        if (Time.timeScale != 0)
-            timeElapsed = (Time.time - startTime) * Time.timeScale;
+        if (Input.GetKey(KeyCode.R))
+            SceneManager.LoadScene("MainMenu");
         yJumpSpeed = Mathf.MoveTowards(yJumpTarget, yJumpSpeed, Time.deltaTime*3);
         if (controller.isGrounded)
         {
             jumping = false;
             a.PlayOneShot(jumpNoise);
         }
-
         moveDirection = new Vector3(Input.GetAxis("Horizontal" + playerIndex), 0, Input.GetAxis("Vertical" + playerIndex));
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= speed;
@@ -70,16 +65,7 @@ public class PlayerController : MonoBehaviour
             }
             Time.timeScale = 0;
             image.enabled = true;
-            if (Player2.p2)
-                winnerText.SetActive(true);
-            else
-            {
-                survivalText.SetActive(true);
-                survivalText.GetComponent<Text>().text = "You survived for " + (Mathf.Round(timeElapsed * 100f) / 100f) % 60 + " seconds!!!! :D";
-            }
-                
-
-
+            winnerText.SetActive(true);
         }
     }
 }

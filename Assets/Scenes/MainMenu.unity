@@ -707,9 +707,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: '1 Player: WASD to move.
 
-    2 Player: Red moves with WASD,
+    2 Player: red moves with WASD,
 
-    and Blue
+    and blue
     moves with the arrow keys.'
 --- !u!222 &972173908
 CanvasRenderer:

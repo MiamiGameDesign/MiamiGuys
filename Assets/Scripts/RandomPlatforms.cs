@@ -12,12 +12,6 @@ public class RandomPlatforms : MonoBehaviour
     // the initial time between cube spawns
     public float initialSpawnTime = 0.5f;
 
-    // the minimum time between cube spawns
-    public float minSpawnTime = 0.01f;
-
-    // the rate at which the spawn time decreases
-    public float spawnTimeDecrement = 0.05f;
-
     // the current time between cube spawns
     private float currentSpawnTime;
 
