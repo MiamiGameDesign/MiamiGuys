@@ -240,7 +240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -69}
+  m_AnchoredPosition: {x: 200, y: -169}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &378092041
@@ -669,7 +669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: 242}
+  m_AnchoredPosition: {x: -420, y: 222}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &972173907
@@ -705,12 +705,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '1 Player: WASD to move.
+  m_Text: '1 Player: WASD to move, space to jump.
 
-    2 Player: red moves with WASD,
+    2 Player: red moves with WASD
+    and jumps with left ctrl,
 
-    and blue
-    moves with the arrow keys.'
+    and blue moves with the arrow keys and jumps with
+    right ctrl.
+
+    R to Restart, ESC to quit.'
 --- !u!222 &972173908
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -978,7 +981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -69}
+  m_AnchoredPosition: {x: -200, y: -169}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1578283534

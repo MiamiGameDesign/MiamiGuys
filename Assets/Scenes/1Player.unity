@@ -538,7 +538,6 @@ GameObject:
   m_Component:
   - component: {fileID: 762478418}
   - component: {fileID: 762478417}
-  - component: {fileID: 762478419}
   m_Layer: 3
   m_Name: RandomPlatform
   m_TagString: Untagged
@@ -576,22 +575,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &762478419
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762478416}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 6, z: -4}
+  m_LocalPosition: {x: 0.13000107, y: 6.4300003, z: -3.7930002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -706,7 +689,6 @@ GameObject:
   - component: {fileID: 1156683633}
   - component: {fileID: 1156683637}
   - component: {fileID: 1156683639}
-  - component: {fileID: 1156683640}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -786,7 +768,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156683631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 2.093}
+  m_LocalPosition: {x: -0.7, y: 1.5, z: 2.3}
   m_LocalScale: {x: 1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -827,28 +809,10 @@ MonoBehaviour:
   playerIndex: 2
   jumping: 0
   image: {fileID: 1528612756}
-  jumpNoise: {fileID: 8300000, guid: de97be7b26806724d973293958cf5269, type: 3}
+  jumpNoise: {fileID: 8300000, guid: 599c933a5b9b201429d844e7585e8d4b, type: 3}
   deathNoise: {fileID: 8300000, guid: 38de8ab2c7722a74a87c69817c991924, type: 3}
   a: {fileID: 1757368844}
   survivalText: {fileID: 488234415}
---- !u!143 &1156683640
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156683631}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1316770255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1533,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: de97be7b26806724d973293958cf5269, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 599c933a5b9b201429d844e7585e8d4b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
@@ -1760,7 +1724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875104040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.91, y: 0, z: 6}
+  m_LocalPosition: {x: 3.91, y: 0, z: 6.05}
   m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []

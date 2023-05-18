@@ -41,7 +41,9 @@ public class Player1Controller : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {   
             a.PlayOneShot(jumpNoise);
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Vector3 vel = rb.velocity;
+            vel.y = jumpForce * 5;
+            rb.velocity = vel;
         }
     }
     // Update is called once per frame
@@ -67,7 +69,7 @@ public class Player1Controller : MonoBehaviour
             Time.timeScale = 0;
             image.enabled = true;
             survivalText.SetActive(true);
-            survivalText.GetComponent<Text>().text = "You survived for " + (Mathf.Round(timeElapsed * 100f) / 100f) % 60 + " seconds!!!! :D";
+            survivalText.GetComponent<Text>().text = "You survived for " + (Mathf.Round(timeElapsed * 100f) / 100f) + " seconds!!!! :D";
         }
     }
     void OnCollisionStay(Collision collision)
