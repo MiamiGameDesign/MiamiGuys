@@ -25,6 +25,8 @@ public class Player2Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dead = false;
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
     }
@@ -40,6 +42,8 @@ public class Player2Controller : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
             Application.Quit();
         if (Input.GetKey(KeyCode.R))
+            SceneManager.LoadScene("2Player");
+        if (Input.GetKey(KeyCode.M))
             SceneManager.LoadScene("MainMenu");
 
         yJumpSpeed = Mathf.MoveTowards(yJumpTarget, yJumpSpeed, Time.deltaTime * 3);

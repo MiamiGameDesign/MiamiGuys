@@ -1408,8 +1408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb8c4f0aa15b9b4ba94a2ef4548e527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  acceleration: 0.05
+  speed: 0.9
+  acceleration: 0.06
   direction: {x: 0, y: 0, z: 1}
 --- !u!23 &1727197313
 MeshRenderer:

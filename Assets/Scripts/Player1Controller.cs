@@ -23,9 +23,12 @@ public class Player1Controller : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
+        dead = false;
         startTime = Time.time;
         rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
     private void FixedUpdate()
     {
@@ -53,10 +56,11 @@ public class Player1Controller : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
             Application.Quit();
         if (Input.GetKey(KeyCode.R))
+            SceneManager.LoadScene("1Player");
+        if (Input.GetKey(KeyCode.M))
             SceneManager.LoadScene("MainMenu");
         if (Time.timeScale != 0)
             timeElapsed = (Time.time - startTime) * Time.timeScale;
-        //Debug.Log("Time elapsed: " + timeElapsed.ToString());
 
         //check if player dies
         if (transform.position.y < -6)

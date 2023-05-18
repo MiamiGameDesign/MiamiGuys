@@ -713,7 +713,7 @@ MonoBehaviour:
     and blue moves with the arrow keys and jumps with
     right ctrl.
 
-    R to Restart, ESC to quit.'
+    R to restart, ESC to quit, M to go to main menu.'
 --- !u!222 &972173908
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1114,7 +1114,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 3840, y: 2160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1780045672
 MonoBehaviour:
